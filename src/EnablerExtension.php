@@ -56,7 +56,7 @@ class EnablerExtension extends Extension
      */
     private $defaultPageClass = '';
 
-    public function beforeCallActionHandler()
+    protected function beforeCallActionHandler()
     {
         $config = Config::inst();
         $action = $this->getOwner()->getAction();
@@ -70,7 +70,7 @@ class EnablerExtension extends Extension
         Config::modify()->remove(Security::class, 'page_class');
     }
 
-    public function afterCallActionHandler()
+    protected function afterCallActionHandler()
     {
         Config::inst()->set(Security::class, 'page_class', $this->defaultPageClass);
     }
